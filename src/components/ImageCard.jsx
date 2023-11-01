@@ -38,12 +38,12 @@ const ImageCard = ({
             onDragEnter={(e) => (dragOverItem.current = index)}
             onDragEnd={() => handleSort(item?.id)}
             onDragOver={(e) => e.preventDefault()}
-            className={`${index === 0 && "col-span-2 row-span-2"} border rounded-[10px] w-full h-full relative cursor-pointer`}
+            className={`${index === 0 ? "col-span-2 row-span-2" : "col-span-1 row-span-1"} border rounded-[10px] w-full h-full relative cursor-pointer`}
 
         >
 
 
-            <img src={item?.image} alt="" className={`w-full h-full rounded-[10px] object-cover  `} />
+            <img src={item?.content === "LocalImage" ? URL.createObjectURL(item?.image) : item?.image} alt="" className={`w-full h-full rounded-[10px] object-cover  `} />
 
 
             <input onClick={() => handleClick(item?.id)} type='checkbox' checked={selectedImages.includes(item?.id)} className={`checkbox h-[20px]  w-[20px] absolute top-5 left-5 cursor-pointer z-10 ${selectedImages.includes(item?.id) ? "opacity-100" : "opacity-0"} ease-in duration-500 ${hoverItem === item?.id && "opacity-100 "}`} />
