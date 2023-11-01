@@ -1,15 +1,15 @@
 import './App.css'
-import ImageCard from './components/ImageCard'
+import GalleryImageContainer from './components/GalleryImageContainer'
+import Header from './components/Header'
 
 function App() {
 
 
   return (
-    <>
-      <div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5'>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item, idx) => <ImageCard item={item} key={idx} />)}
-      </div>
-    </>
+    <div className='container mx-auto my-[20px] bg-white  rounded-[10px]'>
+      <Header />
+      <GalleryImageContainer />
+    </div>
   )
 }
 
