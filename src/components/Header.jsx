@@ -16,7 +16,7 @@ const Header = () => {
         <div className='border-b px-[30px] py-[15px]'>
             {selectedImages?.length > 0 ? <div className='flex items-center justify-between'>
                 <div className='flex gap-3 items-center text-[24px] font-[600]'>
-                    <input type="checkbox" checked />
+                    <input type="checkbox" checked className='w-[20px] h-[20px]' />
                     <p>{selectedImages?.length} {selectedImages?.length > 1 ? "Files" : "File"} Selected</p>
                 </div>
                 <button onClick={handleDeleteFiles} className='text-[18px] text-red-600 font-[500]'>Delete {selectedImages?.length > 1 ? "files" : "file"}</button>
