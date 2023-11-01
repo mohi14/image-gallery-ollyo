@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
 import ImageCard from './ImageCard';
-import { images } from '../utils/utils';
+import { GalleryContext } from '../contexts/GalleryContentProvider';
 
 const GalleryImageContainer = () => {
+    const { allImages } = useContext(GalleryContext)
     return (
         <div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5  gap-5 px-[30px] py-[20px]'>
-            {images.map((item, idx) => <ImageCard item={item} key={idx} />)}
+            {allImages.map((item, idx) => <ImageCard item={item} index={idx} key={idx} />)}
         </div>
     );
 };

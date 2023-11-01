@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react';
 import { GalleryContext } from '../contexts/GalleryContentProvider';
 
 
-const ImageCard = ({ item }) => {
+const ImageCard = ({ item, index }) => {
     const { selectedImages, setSelectedImages } = useContext(GalleryContext)
     const [hoverItem, setHoveredItem] = useState(null)
 
@@ -21,15 +21,15 @@ const ImageCard = ({ item }) => {
     console.log(selectedImages)
 
     return (
-        <div onMouseOver={() => setHoveredItem(item?.id)} onMouseOut={() => setHoveredItem(null)} className={`${item?.id === 1 && "col-span-2 row-span-2"} border rounded-[10px] w-full h-full relative cursor-pointer`}>
+        <div onMouseOver={() => setHoveredItem(item?.id)} onMouseOut={() => setHoveredItem(null)} className={`${index === 0 && "col-span-2 row-span-2"} border rounded-[10px] w-full h-full relative cursor-pointer`}>
 
 
             <img src={item?.image} alt="" className={`w-full h-full rounded-[10px] object-cover  `} />
 
 
-            <input onClick={() => handleClick(item?.id)} type='checkbox' className={`checkbox h-[15px]  w-[15px] absolute top-3 left-3 cursor-pointer z-10 ${selectedImages.includes(item?.id) ? "opacity-100" : "opacity-0"} ease-in duration-500 ${hoverItem === item?.id && "opacity-100 "}`} />
+            <input onClick={() => handleClick(item?.id)} type='checkbox' checked={selectedImages.includes(item?.id)} className={`checkbox h-[15px]  w-[15px] absolute top-3 left-3 cursor-pointer z-10 ${selectedImages.includes(item?.id) ? "opacity-100" : "opacity-0"} ease-in duration-500 ${hoverItem === item?.id && "opacity-100 "}`} />
 
-            <div className={`absolute ${selectedImages?.includes(item?.id) ? "opacity-60" : "opacity-0"}  top-0 left-0 w-full h-full ${selectedImages.includes(item?.id) ? "bg-white" : "bg-black"} rounded-[10px] ${hoverItem === item?.id && !selectedImages.includes(item?.id) && "opacity-50 ease-in duration-500"}`}></div>
+            <div className={`absolute ${selectedImages?.includes(item?.id) ? "opacity-60" : "opacity-0"}  top-0 left-0 w-full h-full ${selectedImages.includes(item?.id) ? "bg-white" : "bg-black ease-in duration-500"} rounded-[10px]  ${hoverItem === item?.id && !selectedImages.includes(item?.id) && "opacity-50 "}`}></div>
 
         </div >
     );
